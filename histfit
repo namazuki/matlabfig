@@ -1,0 +1,57 @@
+%-----------------------------------------------------------------------------------------------------------%
+%-----Function: Plot a histogram with fitting curve
+%-----Input:
+%                     Deformation rate (mm/y) or Fitting accuracy (mm/y)
+%                     
+%-----Output:
+%                     a figure of histfit
+%                     
+%                     
+%                     
+%                     
+%                     
+%-----Author: Xieweiguo 1594862250@qq.com (JXNU, 
+%             School of Geography and Environment)
+%
+% CSDN Blog: https://blog.csdn.net/qq_41159191?type=blog
+%
+%-----Update Date: 20230705 v1
+%-----------------------------------------------------------------------------------------------------------%
+
+% 
+close all
+clear
+clc
+% 
+
+%
+% load data，whatever how many array 
+% when load n arrays，you can plot n figures
+% 
+load ./deformationRate.mat
+load ./fittingAccuracy.mat
+
+def = deformationRate;
+acc = fittingAccuracy;
+
+
+% fig of Deformation rate (mm/y)
+figure( 1 ); 
+h = histfit(def,100); 
+legend({'Statistical','Fitted curve'},'Location','southwest')
+xlabel('Deformation rate (mm/y)')
+ylabel('Point Number')
+xlim ([-50, 20]);
+h(1).FaceColor = "y";
+
+
+
+
+% fig of Fitting accuracy (mm/y)
+figure( 2 );
+h2 = histfit(acc,100);
+legend({'Statistical','Fitted curve'},'Location','southwest')
+xlabel('Fitting accuracy (mm/y)')
+ylabel('Point Number')
+xlim ([0, 1]);
+h2(1).FaceColor = "y";
